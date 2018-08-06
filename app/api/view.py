@@ -21,12 +21,3 @@ class BasicList(Resource):
 		return make_json_result(data=result.data)
 
 
-class Volum(Resource):
-	def __init__(self,novelid):
-		self.novelId=novelid
-	def get(self):
-		volumList=Volum.query.filter_by(id=self.novelid).all()
-		volumschema =VolumSchema(many=True)
-		result = volumschema.dump(volumList)
-		# pprint(result)
-		return make_json_result(data=result.data)
